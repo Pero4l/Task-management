@@ -4,7 +4,9 @@ import { MdTimer } from "react-icons/md";
 import { SiFireship } from "react-icons/si";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
 
-const SubNar = () => {
+const SubNar = ({allData}) => {
+
+   
   return (
     <div className='lg:flex-row flex flex-col px-5 gap-5 pt-5 lg:pt-0'>
         <div className='bg-white  lg:w-fit flex items-center lg:gap-6 gap-16 md:gap-60 px-10 py-5 rounded-xl shadow-md'>
@@ -15,7 +17,7 @@ const SubNar = () => {
 
         <div className='bg-white lg:w-fit flex items-center lg:gap-10 gap-20 md:gap-64  px-10 py-5 rounded-xl shadow-md'>
             <MdTimer className='text-[#b73c4c] text-4xl'/>
-            <p className='text-3xl font-semibold'>5</p>
+            <p className='text-3xl font-semibold'>{allData.length}</p>
             <p>Pending</p>
         </div>
 

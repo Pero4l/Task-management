@@ -67,7 +67,7 @@ function toastMessage(e){
                                   <p className=' text-center'>Let's make today productive</p>
                           </div>
                   </div>
-      <SubNar/>
+      <SubNar allData={allData}/>
 
                 
       
@@ -94,7 +94,7 @@ function toastMessage(e){
     <div className="flex space-x-4">
       <div className="w-1/2">
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Task Date
+          Due Date
         </label>
         <input
           name="date"
@@ -106,7 +106,7 @@ function toastMessage(e){
 
       <div className="w-1/2">
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Task Time
+          Due Time
         </label>
         <input
           name="time"
@@ -163,8 +163,8 @@ function toastMessage(e){
         {Array.isArray(allData) && allData.map((task, index) => (
           <div key={index} className='bg-white p-5 m-3 rounded-lg shadow-md'>
             <h2 className='text-xl font-bold pb-2'> <span>Task Title:</span> {task.title}</h2>
-            <p className='text-gray-600 pb-1'> <span>Task Date: </span>{task.date}</p>
-            <p  className='text-gray-600 pb-2'>Task Time:  {task.time}</p>
+            <p className='text-gray-600 pb-1'> <span>Due Date: </span>{task.date}</p>
+            <p  className='text-gray-600 pb-2'>Due Time:  {task.time}</p>
             <p className='mt-2'> <span>Task Description: </span>{task.description}</p>
           </div>
         ))}

@@ -10,7 +10,8 @@ import { IoSettingsSharp } from "react-icons/io5";
 
 const SideBar = ({isClick}) => {
     return (
-        <div className={!isClick ? 'hidden lg:flex lg:flex-col lg:px-36' : 'px-9 md:px-16 py-10 '}>
+        <div className={!isClick ? 'hidden lg:flex lg:flex-col lg:px-36'
+            : 'fixed top-20 left-0 h-screen bg-white z-50 overflow-y-auto px-9 md:px-16 py-10 shadow-md w-72'}>
                 <h1 className='text-xs sm:text-sm font-medium'>MAIN MENU</h1>
 
                 <div className='flex items-center gap-3 hover:bg-white w-fit hover:p-2 hover:pr-10 sm:hover:pr-22 hover:pl-4 hover:rounded-xl pt-5'></div>
