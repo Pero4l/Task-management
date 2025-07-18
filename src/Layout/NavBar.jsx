@@ -1,36 +1,51 @@
 import React from 'react'
+import { useState } from 'react';
 import { PiNotebookLight } from "react-icons/pi";
 import { FcSearch } from "react-icons/fc";
 import { IoNotificationsSharp } from "react-icons/io5";
-import { FaUserAstronaut } from "react-icons/fa6";
+import { FiPlus } from "react-icons/fi";
+import { LuMenu } from "react-icons/lu";
+import { RiCloseLargeFill } from "react-icons/ri";
 
-const NavBar = () => {
-  return (
-        <>
-  <nav className='flex items-center justify-between px-34 py-10'>
-                <div className='flex items-center gap-64'>
-          <div>
-            <h1 className='text-3xl font-medium'>TODO</h1>
-        </div>
+const NavBar = ({setIsClick, isClick, setAddTask, addTask}) => {
+    const handleMenuClick = () => {
+        setIsClick(!isClick);
+    }
 
-        <div className='flex items-center gap-2'>
-            <span><PiNotebookLight className='text-4xl'/></span>
-            <div>
-                <h1 className='text-4xl font-semibold pb-2'>Good morning, Johar!</h1>
-                <p>Let's make today productive</p>
+    
+
+    const handleAddTask = () => {
+        setAddTask(!addTask)
+    }
+return (
+            <>
+<nav className='flex items-center justify-between py-2 px-5 lg:px-34 lg:py- bg-[#eaeaea] sticky top-0 shadow-sm z-50'>
+                            <div className='flex items-center gap-[279px]'>
+                <div className='flex items-center gap-5'>
+                 {!isClick ?  < RiCloseLargeFill onClick={handleMenuClick} className='lg:hidden text-3xl'/> :  <LuMenu onClick={handleMenuClick} className='lg:hidden text-4xl'/>}
+                    <h1 className='text-3xl font-medium'>TODO</h1>
             </div>
-        </div>
+
+            <div className=' hidden lg:flex items-center gap-2'>
+                    <span><PiNotebookLight className='text-4xl'/></span>
+                    <div>
+                            <h1 className='text-4xl font-semibold pb-2'>Good morning, Johar!</h1>
+                            <p>Let's make today productive</p>
+                    </div>
+            </div>
     </div>
 
-    <div className='flex text-3xl gap-7'>
-        <span className='bg-white p-2 rounded-full'><FcSearch/></span>
-        <span  className='bg-white p-2 rounded-full text-red-700'><IoNotificationsSharp/></span>
-        <span  className='bg-white p-2 rounded-full text-amber-800'><FaUserAstronaut/></span>
+    <div className='flex items-center gap-2 lg:text-3xl lg:gap-5 lg:relative lg:left-3'>
+            <span onClick={handleAddTask} className='bg-white p-2 rounded-full'><FiPlus/></span>
+            <span className='bg-white p-2 rounded-full'><FcSearch/></span>
+            <span  className='bg-white p-2 rounded-full'><IoNotificationsSharp/></span>
+            <img className='bg-white p-2  rounded-full w-16 lg:w-20' src="https://media.istockphoto.com/id/1410870926/vector/nft-monkey.jpg?s=612x612&w=0&k=20&c=xJWmwYkuynah_iiKbq_JTJxTgMHdNhLVjPPbzkwsx0w=" alt="User Image" />
+        
 
     </div>
-                </nav>
-        </>
-  )
+                            </nav>
+            </>
+)
 }
 
 export default NavBar

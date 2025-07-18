@@ -8,17 +8,18 @@ import Home from './Pages/Home'
 import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isClick, setIsClick] = useState(false)
+  const[addTask, setAddTask] = useState(false)
 
   return (
     <>
-      <div className='bg-[#eaeaea] p-20'>
+      <div className='bg-[#eaeaea] lg:p-20'>
 
         <div className='bg-[#f6f6f6] rounded-3xl' >
-        <NavBar />
-      <div className='flex '>
-      <SideBar />
-      <Home/>
+        <NavBar setIsClick={setIsClick} isClick={isClick} setAddTask={setAddTask} addTask={addTask}/>
+      <div className='lg:flex-row flex flex-col lg:pt-8 '>
+      <SideBar isClick={isClick} />
+      <Home setAddTask={setAddTask} addTask={addTask}/>
       </div>
         </div>
       
