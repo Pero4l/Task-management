@@ -165,7 +165,7 @@ function toastMessage(e){
             <h2 className='text-xl font-bold pb-2'> <span>Task Title:</span> {task.title}</h2>
             <p className='text-gray-600 pb-1'> <span>Task Date: </span>{task.date}</p>
             <p  className='text-gray-600 pb-2'>Task Time:  {task.time}</p>
-            <p className='mt-2'> <span>Task Description</span>{task.description}</p>
+            <p className='mt-2'> <span>Task Description: </span>{task.description}</p>
           </div>
         ))}
       </div>
