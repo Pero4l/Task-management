@@ -136,7 +136,7 @@ function toastMessage(e){
     <div className="flex justify-between pt-4">
       <button
         type="button"
-        onClick={() => setAddTask(true)}
+        onClick={() => setAddTask(false)}
         className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
       >
         Close
