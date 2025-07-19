@@ -17,11 +17,13 @@ const NavBar = ({setIsClick, isClick, setAddTask, addTask}) => {
     const handleAddTask = () => {
         setAddTask(!addTask)
     }
+
+
 return (
             <>
-<nav className='flex items-center justify-between py-2 px-5 lg:px-34 lg:py- bg-[#eaeaea] sticky top-0 shadow-sm z-50'>
-                            <div className='flex items-center gap-[279px]'>
-                <div className='flex items-center gap-5'>
+<nav className='flex items-center justify-between py-2 px-5 lg:px-22 lg:py- bg-[#eaeaea] sticky top-0 shadow-sm z-50'>
+                            <div className='flex items-center gap-[360px]'>
+                <div className='flex items-center gap-2'>
                  {!isClick ? <LuMenu onClick={handleMenuClick} className='lg:hidden text-4xl'/> : < RiCloseLargeFill onClick={handleMenuClick} className='lg:hidden text-3xl'/> }
                     <h1 className='text-3xl font-medium'>TODO</h1>
             </div>
