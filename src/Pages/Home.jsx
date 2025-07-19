@@ -2,6 +2,9 @@ import React from 'react'
 import { toast, ToastContainer } from 'react-toastify';
 import SubNar from '../Layout/SubNar'
 import { PiNotebookLight } from "react-icons/pi";
+import { FaTrashAlt } from "react-icons/fa";
+
+
 
 const Home = ({addTask, setAddTask, formData, setFormData, setIsSubmitted, allData, setAllData }) => {
 
@@ -57,6 +60,10 @@ function toastMessage(e){
     localStorage.setItem('tasks', JSON.stringify(allData));
   }, [allData]);
 
+  const handleDelete = (index) => {
+  setAllData(prevallData => prevallData.filter((item, i) => i !== index));
+};
+
   return (
     <div>
 
@@ -76,6 +83,7 @@ function toastMessage(e){
       {addTask && <div className='fixed top-0 left-0 w-full p-5 lg:px-0 h-full bg-black/50 z-50 flex justify-center items-center'>
 
         <div className="bg-white p-6 rounded-md w-full max-w-md shadow-lg space-y-4">
+          <h1 className='text-center font-bold text-3xl'>ADD TASK</h1>
   <form onSubmit={toastMessage} className="space-y-4">
     
     <div>
@@ -86,7 +94,7 @@ function toastMessage(e){
         name="title"
         onChange={inputChange}
         type="text"
-        placeholder="Type task title here..."
+        placeholder="Write task title here..."
         className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
     </div>
@@ -125,7 +133,7 @@ function toastMessage(e){
       <textarea
         name="description"
         onChange={inputChange}
-        placeholder="Type task description here..."
+        placeholder="Write task description here..."
         rows={4}
         className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
@@ -153,10 +161,6 @@ function toastMessage(e){
 
 
         </div>}
-
-        {/*  */}
-
-
     </div>
 
     <div className="p-4">
@@ -165,7 +169,14 @@ function toastMessage(e){
             <h2 className='text-xl font-bold pb-2'> <span>Task Title:</span> {task.title}</h2>
             <p className='text-gray-600 pb-1'> <span>Due Date: </span>{task.date}</p>
             <p  className='text-gray-600 pb-2'>Due Time:  {task.time}</p>
+
+            <div className='flex items-center justify-between'>
             <p className='mt-2'> <span>Task Description: </span>{task.description}</p>
+            <div className='flex gap-3 items-center'> 
+              <input name='check' id='' className='size-5' type="checkbox" />
+              <FaTrashAlt onClick={() => handleDelete(index)} className='text-2xl text-red-600'/>
+            </div>
+            </div>
           </div>
         ))}
       </div>
