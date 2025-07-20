@@ -67,7 +67,6 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
 
   return (
     <div>
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
 
       <div className='lg:hidden flex-col flex justify-center items-center gap-5 shadow-md p-5 m-3'>
         <p><PiNotebookLight className='text-4xl text-center' /></p>
@@ -193,6 +192,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
           </div>
         ))}
       </div>
+      <ToastContainer  />
     </div>
   );
 };
