@@ -69,7 +69,7 @@ const SideBar = ({isClick}) => {
 </div>
         </div>
 
-        <div className='lg:pt-44 pt-16 pb-10'>
+        <div className='lg:pt-44 pt-16 pb-32'>
         <div className='flex items-center gap-3 hover:bg-white w-fit hover:p-2 hover:pr-22 hover:pl-4 hover:rounded-xl pt-7  '>
     <RiLogoutBoxFill className='text-3xl text-red-700'/>
     <p className='text-sm'>Log Out</p>

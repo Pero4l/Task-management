@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import SubNar from '../Layout/SubNar';
 import { PiNotebookLight } from "react-icons/pi";
 import { FaTrashAlt } from "react-icons/fa";
@@ -8,13 +9,11 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
 
   function inputChange(e) {
     const { name, value } = e.target;
-
     setFormData((prev) => {
       const updatedForm = {
         ...prev,
         [name]: value,
       };
-
       localStorage.setItem('formData', JSON.stringify(updatedForm));
       return updatedForm;
     });
@@ -32,13 +31,12 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
 
     setTimeout(() => {
       setIsSubmitted(true);
-    }, 5000);
+      setAddTask(false);
+    }, 1000);
 
-    
     setAllData(prev => [...prev, { ...formData, done: false, id: Date.now() }]);
     localStorage.removeItem('formData');
     setFormData({});
-    setAddTask(false);
   }
 
   useEffect(() => {
@@ -55,9 +53,11 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
 
   const handleDelete = (id) => {
     setAllData(prev => prev.filter(task => task.id !== id));
+    toast.error("Task deleted successfully!");
   };
 
   const handleDone = (id) => {
+    toast.info("Task marked as done!");
     setAllData(prev =>
       prev.map(task =>
         task.id === id ? { ...task, done: !task.done } : task
@@ -67,6 +67,8 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
 
   return (
     <div>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+
       <div className='lg:hidden flex-col flex justify-center items-center gap-5 shadow-md p-5 m-3'>
         <p><PiNotebookLight className='text-4xl text-center' /></p>
         <div>
@@ -130,8 +132,6 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
                 />
               </div>
 
-              <ToastContainer />
-
               <div className="flex justify-between pt-4">
                 <button
                   type="button"
@@ -176,7 +176,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
         ))}
       </div>
 
-      
+      {/* Completed Tasks */}
       <h1 className='text-3xl font-bold py-2 lg:px-[30px] text-center lg:text-start pt-14'>Completed Task <span className='text-green-600'>(Done)</span></h1>
       <div className="py-2 p-5">
         {allData.filter(task => task.done).map((task) => (
