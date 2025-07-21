@@ -8,7 +8,7 @@ import { FiPlus } from "react-icons/fi";
 import { LuMenu } from "react-icons/lu";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-const NavBar = ({setIsClick, isClick, setAddTask, addTask, isTime, isDate, setIsDate, setIsTime}) => {
+const NavBar = ({setIsClick, isClick, setAddTask, addTask, isTime, isDate, setIsDate, setIsTime, greetings, setGreetings}) => {
     const handleMenuClick = () => {
         setIsClick(!isClick);
     }
@@ -27,6 +27,27 @@ const NavBar = ({setIsClick, isClick, setAddTask, addTask, isTime, isDate, setIs
         }, 1000);
         return () => clearInterval(interval);
       }, []);
+
+
+      useEffect(() => {
+        const hours = new Date().getHours();
+        if (hours < 12) {
+          setGreetings('Good Morning');
+        } else if (hours < 18) {
+          setGreetings('Good Afternoon');
+        } else {
+          setGreetings('Good Evening');
+        }
+
+
+//         updateGreeting();
+
+//     const interval = setInterval(updateGreeting, 5000);
+
+//     return () => clearInterval(interval);
+
+      }, []);
+     
     
   
 
@@ -43,7 +64,7 @@ return (
             <div className=' hidden lg:flex items-center gap-2'>
                     <span><PiNotebookLight className='text-4xl'/></span>
                     <div>
-                            <h1 className='text-4xl font-semibold pb-2'>Good morning, Johar!</h1>
+                            <h1 className='text-4xl font-semibold pb-2'>{greetings}, User!</h1>
                             <p>Let's make today <b>{isDate}</b> productive</p>
                             {isTime && <p className=''>Current Time: <b>{isTime}</b></p>}
                     </div>

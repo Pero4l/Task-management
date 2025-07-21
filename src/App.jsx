@@ -30,20 +30,22 @@ function App() {
       setInterval(() => {
         const now = new Date();
         const times = now.toLocaleTimeString('en-US');
-        setFormData(prev => ({ ...prev, time }));
+        setFormData(prev => ({ ...prev, times }));
       }
       , 1000);
     }
 
     const [isTime , setIsTime] = useState(times);
     const[isDate , setIsDate] = useState(date);
-   
+
+    const [greetings, setGreetings] = useState('');
+ 
 
   return (
     <>
       <div className='bg-[#eaeaea] lg:p-20'>
         <div className='bg-[#f6f6f6] rounded-3xl'>
-          <NavBar setIsClick={setIsClick} isClick={isClick} setAddTask={setAddTask} addTask={addTask} isDate={isDate} isTime={isTime} setIsDate={setIsDate} setIsTime={setIsTime} />
+          <NavBar setIsClick={setIsClick} isClick={isClick} setAddTask={setAddTask} addTask={addTask} isDate={isDate} isTime={isTime} setIsDate={setIsDate} setIsTime={setIsTime} greetings={greetings} setGreetings={setGreetings} />
           <div className='lg:flex-row flex flex-col lg:pt-8 '>
             <SideBar isClick={isClick} />
             <Home
