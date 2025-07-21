@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { PiNotebookLight } from "react-icons/pi";
 import { FcSearch } from "react-icons/fc";
 import { IoNotificationsSharp } from "react-icons/io5";
@@ -7,16 +8,27 @@ import { FiPlus } from "react-icons/fi";
 import { LuMenu } from "react-icons/lu";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-const NavBar = ({setIsClick, isClick, setAddTask, addTask}) => {
+const NavBar = ({setIsClick, isClick, setAddTask, addTask, isTime, isDate, setIsDate, setIsTime}) => {
     const handleMenuClick = () => {
         setIsClick(!isClick);
     }
 
-    
 
     const handleAddTask = () => {
         setAddTask(!addTask)
     }
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          const now = new Date();
+          setIsTime(now.toLocaleTimeString('en-US'));
+          setIsDate(now.toLocaleDateString('en-US'));
+        }, 1000);
+        return () => clearInterval(interval);
+      }, []);
+    
+  
 
 
 return (
@@ -32,7 +44,8 @@ return (
                     <span><PiNotebookLight className='text-4xl'/></span>
                     <div>
                             <h1 className='text-4xl font-semibold pb-2'>Good morning, Johar!</h1>
-                            <p>Let's make today productive</p>
+                            <p>Let's make today <b>{isDate}</b> productive</p>
+                            {isTime && <p className=''>Current Time: <b>{isTime}</b></p>}
                     </div>
             </div>
     </div>
