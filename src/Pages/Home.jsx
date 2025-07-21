@@ -35,7 +35,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
     const { title, date, time, description } = formData;
 
     if (!title || !date || !time || !description) {
-      toast.error("Please fill in all fields.");
+      toast .error("Please fill in all fields.");
       return;
     }
 
@@ -88,18 +88,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
 
   return (
     <div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+    
 
       <div className='lg:hidden flex-col flex justify-center items-center gap-5 shadow-md p-5 m-3'>
         <p><PiNotebookLight className='text-4xl text-center' /></p>
@@ -235,6 +224,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
           </div>
         ))}
       </div>
+      <ToastContainer/> 
     </div>
   );
 };
