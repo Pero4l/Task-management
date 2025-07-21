@@ -40,19 +40,12 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
     }
 
     if (editId !== null) {
-     
       const updatedTasks = allData.map(task =>
         task.id === editId ? { ...task, ...formData } : task
       );
-     
       setAllData(updatedTasks);
-
-
-
       toast.success("Task updated successfully!");
-      
     } else {
-     
       const newTask = {
         ...formData,
         id: Date.now(),
@@ -60,7 +53,6 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
       };
       toast.success("Task added successfully!");
       setAllData(prev => [...prev, newTask]);
-      
     }
 
     setFormData({});
@@ -81,41 +73,33 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
   };
 
   const handleDelete = (id) => {
-   
     setAllData(prev => prev.filter(task => task.id !== id));
-
     toast.error("Task deleted successfully!");
-    
   };
 
   const handleDone = (id) => {
-    
     setAllData(prev =>
       prev.map(task =>
         task.id === id ? { ...task, done: !task.done } : task
       )
     );
-
     toast.info("Task marked as done.");
-    
   };
 
   return (
     <div>
       <ToastContainer
-  position="top-right"
-  autoClose={3000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-  pauseOnHover
-  theme="light"
-/>
-
-
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       <div className='lg:hidden flex-col flex justify-center items-center gap-5 shadow-md p-5 m-3'>
         <p><PiNotebookLight className='text-4xl text-center' /></p>
@@ -176,7 +160,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
                   onChange={inputChange}
                   rows={4}
                   placeholder="Write task description here..."
-                  className="w-full px-4 py-2 border  border-blue-500 rounded-md bg-gray-100 outline-none"
+                  className="w-full px-4 py-2 border border-blue-500 rounded-md bg-gray-100 outline-none"
                 />
               </div>
               <div className="flex justify-between pt-4">
@@ -203,7 +187,6 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
         </div>
       )}
 
-      
       <div className="p-4">
         <h1 className='text-3xl font-bold py-2 px-4 pt-14 text-center lg:text-start'>
           Pending Task <span className='text-red-600'>(Active)</span>
@@ -213,9 +196,11 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
             <h2 className='text-xl font-bold pb-2'>Task Title: {task.title}</h2>
             <p className='text-gray-600 pb-1'>Due Date: {task.date}</p>
             <p className='text-gray-600 pb-2'>Due Time: {task.time}</p>
-            <div className='flex items-center justify-between'>
-              <p><b>Task Description:</b> {task.description}</p>
-              <div className='flex gap-3 items-center'>
+            <div className='flex flex-col sm:flex-row items-end sm:items-center justify-between gap-2'>
+              <p className='max-w-full break-words w-full'>
+                <b>Task Description:</b> {task.description}
+              </p>
+              <div className='flex gap-3 items-center justify-end'>
                 <input
                   type="checkbox"
                   checked={task.done}
@@ -230,7 +215,6 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
         ))}
       </div>
 
-    
       <h1 className='text-3xl font-bold py-2 lg:px-[30px] text-center lg:text-start pt-14'>
         Completed Task <span className='text-green-600'>(Done)</span>
       </h1>
@@ -240,9 +224,11 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
             <h2 className='text-xl font-bold pb-2'>Task Title: {task.title}</h2>
             <p className='text-gray-600 pb-1'>Due Date: {task.date}</p>
             <p className='text-gray-600 pb-2'>Due Time: {task.time}</p>
-            <div className='flex items-center justify-between'>
-              <p><b>Task Description:</b> {task.description}</p>
-              <div className='flex gap-3 items-center'>
+            <div className='flex flex-col sm:flex-row items-end sm:items-center justify-between gap-2'>
+              <p className='max-w-full break-words w-full'>
+                <b>Task Description:</b> {task.description}
+              </p>
+              <div className=''>
                 <FaTrashAlt onClick={() => handleDelete(task.id)} className='text-2xl text-red-600 cursor-pointer' />
               </div>
             </div>
