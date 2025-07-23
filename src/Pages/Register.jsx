@@ -2,12 +2,17 @@ import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { data } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Register = ({user, setUser}) => {
 
     const { register, handleSubmit, watch,  formState: { errors } } = useForm()
+
+
     const onSubmit = async (data) => {
+
+      toast.success("Registration successful!");
       const file = data.file[0];
     
       // Convert image file to base64
@@ -30,11 +35,29 @@ const Register = ({user, setUser}) => {
     
       localStorage.setItem('user', JSON.stringify(userData));
       setUser(userData);
+
+      
     };
     
-
+   
     
+    const navigate = useNavigate()
 
+    const handleReg = () => {
+      // if (user) {
+      //   toast.error("You are already registered!");
+      //   return;
+      // }
+      if (!watch("Name") || !watch("email") || !watch("password") || !watch("file")) {
+        toast.error("Please fill in all fields.");
+        return;
+      }
+
+      setUser(true)
+    setTimeout(() => {
+        navigate('/login');
+      }, 3000);
+  }
     
     
 
@@ -45,7 +68,9 @@ const Register = ({user, setUser}) => {
     
   return (
     <div>
+     
              <form onSubmit={handleSubmit(onSubmit)} className='bg-white px-[20px] py-20 lg:px-[750px] lg:mt-10'>
+             <ToastContainer/>
                             <h1 className='text-3xl text-center pb-8 font-semibold'>REGISTER</h1>
                 <div className='pb-5'>
                 <label htmlFor=""> Name:</label> <br />
@@ -112,7 +137,7 @@ const Register = ({user, setUser}) => {
                 </div>
       
       
-      <button className='p-3 text-xl text-white mt-5 bg-slate-900 rounded-md w-full hover:bg-slate-400 hover:text-gray-900' type="submit" placeholder=''>
+      <button onClick={handleReg}  className='p-3 text-xl text-white mt-5 bg-slate-900 rounded-md w-full hover:bg-slate-400 hover:text-gray-900' type="submit" placeholder=''>
         Submit
       </button>
 

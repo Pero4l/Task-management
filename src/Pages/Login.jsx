@@ -13,15 +13,17 @@ const Login = ({user}) => {
         const email = watch("email");
         const password = watch("password");
     
-        // Retrieve user data from localStorage
+       
         const user = JSON.parse(localStorage.getItem('user')) || null;
         // const user = storedUser ? JSON.parse(storedUser) : null;
     
-        // Check if the email and password match
+        
         if (user && user.email === email && user.password === password) {
             toast.success("Login successful!");
-            // Redirect or perform further actions here
-            navigate('/home'); // Navigate to the home page after successful login
+            
+            setTimeout(() => {
+                navigate('/home'); 
+            }, 3000)
         } else {
             toast.error("Invalid email or password");
         }
@@ -29,6 +31,7 @@ const Login = ({user}) => {
   return (
     <div>
         <form onSubmit={handleSubmit(onSubmit)} className='bg-white px-[20px] py-20 lg:px-[750px] lg:mt-10'>
+            <ToastContainer/>
                             <h1 className='text-3xl text-center pb-8 font-semibold mt-3'>Login</h1>
             
                 
