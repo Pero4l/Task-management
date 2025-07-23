@@ -5,6 +5,7 @@ import NavBar from './Layout/NavBar'
 import Home from './Pages/Home'
 import Welcome from './Pages/Welcome'
 import Register from './Pages/Register'
+import Login from './Pages/Login'
 import './index.css'
 
 function App() {
@@ -61,7 +62,13 @@ function App() {
 
   return (
     <>
-      {/* <div className='bg-[#eaeaea] lg:p-20'>
+      
+
+      
+
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={ <div className='bg-[#eaeaea] lg:p-20'>
         <div className='bg-[#f6f6f6] rounded-3xl'>
           <NavBar setIsClick={setIsClick} isClick={isClick}
            setAddTask={setAddTask}
@@ -85,26 +92,14 @@ function App() {
               setIsSubmitted={setIsSubmitted}
               allData={allData}
               setAllData={setAllData}
+              user={user}
             />
             
           </div>
         </div>
-      </div>
-
-      <Register user={user} setUser={setUser} /> */}
-
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/home" element={<Home 
-          setAddTask={setAddTask} 
-          addTask={addTask} 
-          formData={formData} 
-          setFormData={setFormData} 
-          isSubmitted={isSubmitted} 
-          setIsSubmitted={setIsSubmitted} 
-          allData={allData} 
-          setAllData={setAllData} />} />
+      </div>} />
         <Route path="/register" element={<Register user={user} setUser={setUser} />} />
+         <Route path="/login" element={<Login user={user}/>} /> 
       </Routes>
     </>
   )

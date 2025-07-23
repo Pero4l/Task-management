@@ -82,7 +82,7 @@ return (
             <span className='bg-white p-2 rounded-full'><FcSearch/></span>
             <span  className='bg-white p-2 rounded-full'><IoNotificationsSharp/></span>
             <img
-  className='bg-white p-2 rounded-full w-16 lg:w-20'
+  className='bg-white  rounded-full size-12 lg:size-16'
   src={user?.image || "default-avatar.jpg"}
   alt="User"
 />

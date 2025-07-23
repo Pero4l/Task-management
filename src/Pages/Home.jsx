@@ -5,7 +5,7 @@ import SubNar from '../Layout/SubNar';
 import { PiNotebookLight } from "react-icons/pi";
 import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
 
-const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allData, setAllData }) => {
+const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allData, setAllData, user }) => {
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
@@ -114,7 +114,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
       <div className='lg:hidden flex-col flex justify-center items-center gap-5 shadow-md p-5 m-3'>
         <p><PiNotebookLight className='text-4xl text-center' /></p>
         <div>
-          <h1 className='text-3xl font-semibold pb-2'>{greeting}, User!</h1>
+          <h1 className='text-3xl font-semibold pb-2'>{greeting}, {user?.Name || 'Guest'}</h1>
           <p className='text-center'>Let's make today <b>{date}</b> productive</p>
           {times && <p className='text-center'>Current Time: <b>{times}</b></p>}
         </div>
