@@ -35,7 +35,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
     const { title, date, time, description } = formData;
 
     if (!title || !date || !time || !description) {
-      toast .error("Please fill in all fields.");
+      toast.error("Please fill in all fields.");
       return;
     }
 
@@ -114,7 +114,7 @@ const Home = ({ addTask, setAddTask, formData, setFormData, setIsSubmitted, allD
       <div className='lg:hidden flex-col flex justify-center items-center gap-5 shadow-md p-5 m-3'>
         <p><PiNotebookLight className='text-4xl text-center' /></p>
         <div>
-          <h1 className='text-3xl font-semibold pb-2'>{greeting}, {user?.Name || 'Guest'}</h1>
+          <h1 className='text-3xl font-semibold pb-2'>{greeting}, {user?.name || 'Guest'}</h1>
           <p className='text-center'>Let's make today <b>{date}</b> productive</p>
           {times && <p className='text-center'>Current Time: <b>{times}</b></p>}
         </div>

@@ -9,25 +9,21 @@ const Login = ({user}) => {
 
 
     const { register, handleSubmit, watch,  formState: { errors } } = useForm()
-    const onSubmit = () => {
-        const email = watch("email");
-        const password = watch("password");
-    
-       
-        const user = JSON.parse(localStorage.getItem('user')) || null;
-        // const user = storedUser ? JSON.parse(storedUser) : null;
-    
-        
-        if (user && user.email === email && user.password === password) {
-            toast.success("Login successful!");
-            
-            setTimeout(() => {
-                navigate('/home'); 
-            }, 3000)
+    const onSubmit = (data) => {
+        const { email, password } = data;
+      
+        const storedUser = JSON.parse(localStorage.getItem('user')) || null;
+      
+        if (storedUser && storedUser.email === email && storedUser.password === password) {
+          toast.success("Login successful!");
+          setTimeout(() => {
+            navigate('/home');
+          }, 3000);
         } else {
-            toast.error("Invalid email or password");
+          toast.error("Invalid email or password");
         }
-    }
+      };
+      
   return (
     <div>
         <form onSubmit={handleSubmit(onSubmit)} className='bg-white px-[20px] py-20 lg:px-[750px] lg:mt-10'>

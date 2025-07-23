@@ -68,7 +68,7 @@ return (
                     <span><PiNotebookLight className='text-4xl'/></span>
                     <div>
                     <h1 className='text-4xl font-semibold pb-2'>
-                      {greetings}, {user?.Name || 'Guest'}!
+                      {greetings}, {user?.name || 'Guest'}!
                     </h1>
 
                             <p>Let's make today <b>{isDate}</b> productive</p>
