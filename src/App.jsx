@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
 import SideBar from './Layout/SideBar'
 import NavBar from './Layout/NavBar'
 import Home from './Pages/Home'
+import Welcome from './Pages/Welcome'
+import Register from './Pages/Register'
 import './index.css'
 
 function App() {
+
   const [isClick, setIsClick] = useState(false)
   const [addTask, setAddTask] = useState(false)
 
@@ -15,6 +18,8 @@ function App() {
     description: '',
     date: '',
   });
+
+
 
   const [allData, setAllData] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -39,13 +44,36 @@ function App() {
     const[isDate , setIsDate] = useState(date);
 
     const [greetings, setGreetings] = useState('');
+
+
+   
+    const [user, setUser] = useState(() => {
+      const storedUser = localStorage.getItem('user');
+      return storedUser ? JSON.parse(storedUser) : null; // Single object or null
+    });
+    
+
+
+   
+    
+  
  
 
   return (
     <>
-      <div className='bg-[#eaeaea] lg:p-20'>
+      {/* <div className='bg-[#eaeaea] lg:p-20'>
         <div className='bg-[#f6f6f6] rounded-3xl'>
-          <NavBar setIsClick={setIsClick} isClick={isClick} setAddTask={setAddTask} addTask={addTask} isDate={isDate} isTime={isTime} setIsDate={setIsDate} setIsTime={setIsTime} greetings={greetings} setGreetings={setGreetings} />
+          <NavBar setIsClick={setIsClick} isClick={isClick}
+           setAddTask={setAddTask}
+            addTask={addTask}
+             isDate={isDate}
+              isTime={isTime}
+               setIsDate={setIsDate}
+                setIsTime={setIsTime} 
+                greetings={greetings}
+                 setGreetings={setGreetings}
+                 user={user}
+                 />
           <div className='lg:flex-row flex flex-col lg:pt-8 '>
             <SideBar isClick={isClick} />
             <Home
@@ -58,9 +86,26 @@ function App() {
               allData={allData}
               setAllData={setAllData}
             />
+            
           </div>
         </div>
       </div>
+
+      <Register user={user} setUser={setUser} /> */}
+
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={<Home 
+          setAddTask={setAddTask} 
+          addTask={addTask} 
+          formData={formData} 
+          setFormData={setFormData} 
+          isSubmitted={isSubmitted} 
+          setIsSubmitted={setIsSubmitted} 
+          allData={allData} 
+          setAllData={setAllData} />} />
+        <Route path="/register" element={<Register user={user} setUser={setUser} />} />
+      </Routes>
     </>
   )
 }

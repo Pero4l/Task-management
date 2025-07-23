@@ -8,10 +8,13 @@ import { FiPlus } from "react-icons/fi";
 import { LuMenu } from "react-icons/lu";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-const NavBar = ({setIsClick, isClick, setAddTask, addTask, isTime, isDate, setIsDate, setIsTime, greetings, setGreetings}) => {
+const NavBar = ({setIsClick, isClick, setAddTask, addTask, isTime, isDate, setIsDate, setIsTime, greetings, setGreetings, user}) => {
     const handleMenuClick = () => {
         setIsClick(!isClick);
     }
+
+    
+    
 
 
     const handleAddTask = () => {
@@ -64,7 +67,10 @@ return (
             <div className=' hidden lg:flex items-center gap-2'>
                     <span><PiNotebookLight className='text-4xl'/></span>
                     <div>
-                            <h1 className='text-4xl font-semibold pb-2'>{greetings}, User!</h1>
+                    <h1 className='text-4xl font-semibold pb-2'>
+                      {greetings}, {user?.Name || 'Guest'}!
+                    </h1>
+
                             <p>Let's make today <b>{isDate}</b> productive</p>
                             {isTime && <p className=''>Current Time: <b>{isTime}</b></p>}
                     </div>
@@ -75,8 +81,12 @@ return (
             <span onClick={handleAddTask} className='bg-white p-2 rounded-full'><FiPlus/></span>
             <span className='bg-white p-2 rounded-full'><FcSearch/></span>
             <span  className='bg-white p-2 rounded-full'><IoNotificationsSharp/></span>
-            <img className='bg-white p-2  rounded-full w-16 lg:w-20' src="https://media.istockphoto.com/id/1410870926/vector/nft-monkey.jpg?s=612x612&w=0&k=20&c=xJWmwYkuynah_iiKbq_JTJxTgMHdNhLVjPPbzkwsx0w=" alt="User Image" />
-        
+            <img
+  className='bg-white p-2 rounded-full w-16 lg:w-20'
+  src={user?.image || "default-avatar.jpg"}
+  alt="User"
+/>
+
 
     </div>
                             </nav>
