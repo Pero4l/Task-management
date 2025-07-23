@@ -5,7 +5,7 @@ import ani from '/ani.jpeg'
 const Welcome = () => {
   return (
     <div>
-                <div className="flex  justify-center min-h-screen ">
+                <div className="flex  justify-center -mt-14 min-h-screen ">
             <div className="bg-white rounded-xl w-full  p-8">
 
         <img className='lg:w-[700px] w-[700px] mt-10 lg:relative left-[550px]' src={ani} alt="" />
