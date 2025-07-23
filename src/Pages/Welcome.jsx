@@ -19,7 +19,7 @@ const Welcome = () => {
 
 </em></p>
         <div className='flex justify-center mt-14'>
-       <Link to="/register"><button className='p-3 bg-purple-600 text-white w-[330px]  lg:w-[900px]  rounded-md text-xl hover:bg-purple-300 hover:text-gray-700'>Get Started</button></Link>
+       <Link to="/register"><button className='p-3 bg-purple-600 text-white w-[370px]  lg:w-[900px]  rounded-md text-xl hover:bg-purple-300 hover:text-gray-700'>Get Started</button></Link>
         </div>
 
  
