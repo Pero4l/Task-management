@@ -69,6 +69,38 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
 
+        <Route path="/home" element={
+          <div className='bg-[#eaeaea] lg:p-20'>
+          <div className='bg-[#f6f6f6] rounded-3xl'>
+            <NavBar setIsClick={setIsClick} isClick={isClick}
+             setAddTask={setAddTask}
+              addTask={addTask}
+               isDate={isDate}
+                isTime={isTime}
+                 setIsDate={setIsDate}
+                  setIsTime={setIsTime} 
+                  greetings={greetings}
+                   setGreetings={setGreetings}
+                   user={user}
+                   />
+            <div className='lg:flex-row flex flex-col lg:pt-8 '>
+              <SideBar isClick={isClick} />
+              <Home
+                setAddTask={setAddTask}
+                addTask={addTask}
+                formData={formData}
+                setFormData={setFormData}
+                isSubmitted={isSubmitted}
+                setIsSubmitted={setIsSubmitted}
+                allData={allData}
+                setAllData={setAllData}
+                user={user}
+              />
+              
+            </div>
+          </div>
+        </div>
+        } />
         
         <Route path="/register" element={<Register user={user} setUser={setUser} />} />
          <Route path="/login" element={<Login user={user}/>} /> 
